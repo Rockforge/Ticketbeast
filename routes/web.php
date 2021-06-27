@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ConcertsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ConcertsController;
+use App\Http\Controllers\ConcertsOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,3 +16,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/concerts/{id}', [ConcertsController::class, 'show']);
+
+Route::post('/concerts/{id}/orders', [ConcertsOrderController::class, 'store']);
