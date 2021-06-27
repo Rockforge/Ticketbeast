@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Concert extends Model
 {
@@ -61,5 +62,31 @@ class Concert extends Model
     public function scopePublished($query)
     {
         return $query->whereNotNull('published_at');
+    }
+
+    /**
+     * Get all of the orders for the Concert
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function orderTickets($email, $ticketQuantity)
+    {
+
+        // Creating a new order
+
+        $order = $this->orders()->create([
+            'email' => $email
+        ]);
+
+        foreach(range(1, $ticketQuantity) as $i) {
+            $order->tickets()->create([]);
+        }
+
+        return $order;
     }
 }
