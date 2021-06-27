@@ -6,7 +6,9 @@ use App\Models\Concert;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Tests\TestCase;
-// use PHPUnit\Framework\TestCase; // Sadly, when using factory models we have to make do without using this
+
+// Sadly, when using factory models we have to make do without using this
+// use PHPUnit\Framework\TestCase;
 
 class ConcertTest extends TestCase
 {
