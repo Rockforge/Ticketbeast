@@ -76,9 +76,7 @@ class Concert extends Model
 
     public function orderTickets($email, $ticketQuantity)
     {
-
         // Creating a new order
-
         $order = $this->orders()->create([
             'email' => $email
         ]);
